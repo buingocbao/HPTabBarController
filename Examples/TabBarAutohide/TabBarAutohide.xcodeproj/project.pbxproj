@@ -1,0 +1,444 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		113DCB8E196E475F00E6A347 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DCB8D196E475F00E6A347 /* main.m */; };
+		113DCB91196E476000E6A347 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DCB90196E476000E6A347 /* AppDelegate.m */; };
+		113DCB99196E476000E6A347 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 113DCB98196E476000E6A347 /* Images.xcassets */; };
+		113DCBA5196E476000E6A347 /* TabBarAutohideTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DCBA4196E476000E6A347 /* TabBarAutohideTests.m */; };
+		113DCBB1196E491400E6A347 /* HPTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DCBB0196E491400E6A347 /* HPTabBarController.m */; };
+		113DCBB3196E505F00E6A347 /* meo.png in Resources */ = {isa = PBXBuildFile; fileRef = 113DCBB2196E505F00E6A347 /* meo.png */; };
+		113DCBB7196E741600E6A347 /* HPTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DCBB6196E741600E6A347 /* HPTabBar.m */; };
+		113DCBBA196E8C8400E6A347 /* HPTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DCBB9196E8C8400E6A347 /* HPTabBarItem.m */; };
+		114E4286196EDF980090FD93 /* meoBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = 114E4285196EDF980090FD93 /* meoBlue.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		113DCB9F196E476000E6A347 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 113DCB80196E475F00E6A347 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 113DCB87196E475F00E6A347;
+			remoteInfo = TabBarAutohide;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		113DCB88196E475F00E6A347 /* TabBarAutohide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TabBarAutohide.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		113DCB8C196E475F00E6A347 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		113DCB8D196E475F00E6A347 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		113DCB8F196E476000E6A347 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		113DCB90196E476000E6A347 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		113DCB98196E476000E6A347 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		113DCB9E196E476000E6A347 /* TabBarAutohideTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TabBarAutohideTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		113DCBA3196E476000E6A347 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		113DCBA4196E476000E6A347 /* TabBarAutohideTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarAutohideTests.m; sourceTree = "<group>"; };
+		113DCBAF196E491400E6A347 /* HPTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPTabBarController.h; path = ../../../Class/HPTabBarController.h; sourceTree = "<group>"; };
+		113DCBB0196E491400E6A347 /* HPTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HPTabBarController.m; path = ../../../Class/HPTabBarController.m; sourceTree = "<group>"; };
+		113DCBB2196E505F00E6A347 /* meo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meo.png; sourceTree = "<group>"; };
+		113DCBB5196E741600E6A347 /* HPTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPTabBar.h; path = ../../../Class/HPTabBar.h; sourceTree = "<group>"; };
+		113DCBB6196E741600E6A347 /* HPTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HPTabBar.m; path = ../../../Class/HPTabBar.m; sourceTree = "<group>"; };
+		113DCBB8196E8C8400E6A347 /* HPTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPTabBarItem.h; path = ../../../Class/HPTabBarItem.h; sourceTree = "<group>"; };
+		113DCBB9196E8C8400E6A347 /* HPTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HPTabBarItem.m; path = ../../../Class/HPTabBarItem.m; sourceTree = "<group>"; };
+		114E4285196EDF980090FD93 /* meoBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meoBlue.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		113DCB85196E475F00E6A347 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		113DCB9B196E476000E6A347 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		113DCB7F196E475F00E6A347 = {
+			isa = PBXGroup;
+			children = (
+				113DCB8A196E475F00E6A347 /* TabBarAutohide */,
+				113DCBA1196E476000E6A347 /* TabBarAutohideTests */,
+				113DCB89196E475F00E6A347 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		113DCB89196E475F00E6A347 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				113DCB88196E475F00E6A347 /* TabBarAutohide.app */,
+				113DCB9E196E476000E6A347 /* TabBarAutohideTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		113DCB8A196E475F00E6A347 /* TabBarAutohide */ = {
+			isa = PBXGroup;
+			children = (
+				113DCBB4196E506200E6A347 /* Icons */,
+				113DCBAE196E48DE00E6A347 /* Controllers */,
+				113DCB8F196E476000E6A347 /* AppDelegate.h */,
+				113DCB90196E476000E6A347 /* AppDelegate.m */,
+				113DCB98196E476000E6A347 /* Images.xcassets */,
+				113DCB8B196E475F00E6A347 /* Supporting Files */,
+			);
+			path = TabBarAutohide;
+			sourceTree = "<group>";
+		};
+		113DCB8B196E475F00E6A347 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				113DCB8C196E475F00E6A347 /* Info.plist */,
+				113DCB8D196E475F00E6A347 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		113DCBA1196E476000E6A347 /* TabBarAutohideTests */ = {
+			isa = PBXGroup;
+			children = (
+				113DCBA4196E476000E6A347 /* TabBarAutohideTests.m */,
+				113DCBA2196E476000E6A347 /* Supporting Files */,
+			);
+			path = TabBarAutohideTests;
+			sourceTree = "<group>";
+		};
+		113DCBA2196E476000E6A347 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				113DCBA3196E476000E6A347 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		113DCBAE196E48DE00E6A347 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				113DCBB5196E741600E6A347 /* HPTabBar.h */,
+				113DCBB6196E741600E6A347 /* HPTabBar.m */,
+				113DCBB8196E8C8400E6A347 /* HPTabBarItem.h */,
+				113DCBB9196E8C8400E6A347 /* HPTabBarItem.m */,
+				113DCBAF196E491400E6A347 /* HPTabBarController.h */,
+				113DCBB0196E491400E6A347 /* HPTabBarController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		113DCBB4196E506200E6A347 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				114E4285196EDF980090FD93 /* meoBlue.png */,
+				113DCBB2196E505F00E6A347 /* meo.png */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		113DCB87196E475F00E6A347 /* TabBarAutohide */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 113DCBA8196E476000E6A347 /* Build configuration list for PBXNativeTarget "TabBarAutohide" */;
+			buildPhases = (
+				113DCB84196E475F00E6A347 /* Sources */,
+				113DCB85196E475F00E6A347 /* Frameworks */,
+				113DCB86196E475F00E6A347 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TabBarAutohide;
+			productName = TabBarAutohide;
+			productReference = 113DCB88196E475F00E6A347 /* TabBarAutohide.app */;
+			productType = "com.apple.product-type.application";
+		};
+		113DCB9D196E476000E6A347 /* TabBarAutohideTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 113DCBAB196E476000E6A347 /* Build configuration list for PBXNativeTarget "TabBarAutohideTests" */;
+			buildPhases = (
+				113DCB9A196E476000E6A347 /* Sources */,
+				113DCB9B196E476000E6A347 /* Frameworks */,
+				113DCB9C196E476000E6A347 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				113DCBA0196E476000E6A347 /* PBXTargetDependency */,
+			);
+			name = TabBarAutohideTests;
+			productName = TabBarAutohideTests;
+			productReference = 113DCB9E196E476000E6A347 /* TabBarAutohideTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		113DCB80196E475F00E6A347 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = CoreDump;
+				TargetAttributes = {
+					113DCB87196E475F00E6A347 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					113DCB9D196E476000E6A347 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = 113DCB87196E475F00E6A347;
+					};
+				};
+			};
+			buildConfigurationList = 113DCB83196E475F00E6A347 /* Build configuration list for PBXProject "TabBarAutohide" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 113DCB7F196E475F00E6A347;
+			productRefGroup = 113DCB89196E475F00E6A347 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				113DCB87196E475F00E6A347 /* TabBarAutohide */,
+				113DCB9D196E476000E6A347 /* TabBarAutohideTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		113DCB86196E475F00E6A347 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				113DCB99196E476000E6A347 /* Images.xcassets in Resources */,
+				114E4286196EDF980090FD93 /* meoBlue.png in Resources */,
+				113DCBB3196E505F00E6A347 /* meo.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		113DCB9C196E476000E6A347 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		113DCB84196E475F00E6A347 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				113DCBB1196E491400E6A347 /* HPTabBarController.m in Sources */,
+				113DCBB7196E741600E6A347 /* HPTabBar.m in Sources */,
+				113DCBBA196E8C8400E6A347 /* HPTabBarItem.m in Sources */,
+				113DCB91196E476000E6A347 /* AppDelegate.m in Sources */,
+				113DCB8E196E475F00E6A347 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		113DCB9A196E476000E6A347 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				113DCBA5196E476000E6A347 /* TabBarAutohideTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		113DCBA0196E476000E6A347 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 113DCB87196E475F00E6A347 /* TabBarAutohide */;
+			targetProxy = 113DCB9F196E476000E6A347 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		113DCBA6196E476000E6A347 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		113DCBA7196E476000E6A347 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		113DCBA9196E476000E6A347 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = TabBarAutohide/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		113DCBAA196E476000E6A347 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = TabBarAutohide/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		113DCBAC196E476000E6A347 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TabBarAutohide.app/TabBarAutohide";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TabBarAutohideTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Debug;
+		};
+		113DCBAD196E476000E6A347 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TabBarAutohide.app/TabBarAutohide";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TabBarAutohideTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		113DCB83196E475F00E6A347 /* Build configuration list for PBXProject "TabBarAutohide" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				113DCBA6196E476000E6A347 /* Debug */,
+				113DCBA7196E476000E6A347 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		113DCBA8196E476000E6A347 /* Build configuration list for PBXNativeTarget "TabBarAutohide" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				113DCBA9196E476000E6A347 /* Debug */,
+				113DCBAA196E476000E6A347 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		113DCBAB196E476000E6A347 /* Build configuration list for PBXNativeTarget "TabBarAutohideTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				113DCBAC196E476000E6A347 /* Debug */,
+				113DCBAD196E476000E6A347 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 113DCB80196E475F00E6A347 /* Project object */;
+}

@@ -5,4 +5,7 @@
 # http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control?
 #
 # Pods/
-
+.DS_Store
+Examples/TabBarAutohide/TabBarAutohide.xcodeproj/xcuserdata/*
+Examples/TabBarAutohide/TabBarAutohide.xcodeproj/project.xcworkspace/xcuserdata/*
+HPTabBarController.xcworkspace/xcuserdata/*
