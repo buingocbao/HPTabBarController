@@ -28,6 +28,15 @@
     return self;
 }
 
+- (instancetype)init
+{
+    if (!(self = [super init])) {
+        return nil;
+    }
+    [self setTabBarHeight:60];
+    return self;
+}
+
 #pragma mark - Init View
 
 /*

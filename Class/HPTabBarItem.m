@@ -62,7 +62,7 @@
         image = [self unselectedImage];
     }
     
-    imageSize = [image size];
+    imageSize = self.bounds.size;
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSaveGState(context);
