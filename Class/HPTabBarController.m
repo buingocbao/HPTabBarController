@@ -24,9 +24,11 @@
         return nil;
     }
     [self setViewControllers:viewControllers];
-    [self setTabBarHeight:49];
+    [self setTabBarHeight:60];
     return self;
 }
+
+#pragma mark - Init View
 
 /*
  
@@ -75,8 +77,8 @@
 - (void)setTabBarHeight:(CGFloat)tabBarHeight
 {
     _tabBarHeight = tabBarHeight;
-    [self.contentView setFrame:CGRectMake(0, 0, self.view.bounds.size.width,self.view.bounds.size.height-_tabBarHeight)];
-    [self.tabBar setFrame:CGRectMake(0, self.view.bounds.size.height-_tabBarHeight, self.view.bounds.size.width, _tabBarHeight)];
+    [self.contentView setFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds))];
+    [self.tabBar setFrame:CGRectMake(0, CGRectGetHeight(self.view.bounds)-_tabBarHeight, CGRectGetWidth(self.view.bounds), _tabBarHeight)];
 }
 
 /*
@@ -140,15 +142,15 @@
  
 */
 
-- (void)setTabBarItemselectedImages:(NSArray *)tabBarItemselectedImages
+- (void)setSelectedTabBarItemImages:(NSArray *)selectedTabBarItemImages
 {
-    _tabBarItemselectedImages = [tabBarItemselectedImages copy];
+    _selectedTabBarItemImages = [selectedTabBarItemImages copy];
     for (int i = 0; i < [self.tabBar.items count]; i++) {
-        if (i >= [_tabBarItemselectedImages count]) {
+        if (i >= [_selectedTabBarItemImages count]) {
             return;
         }
         HPTabBarItem *item = [self.tabBar.items objectAtIndex:i];
-        [item setSelectedImage:[_tabBarItemselectedImages objectAtIndex:i]];
+        [item setSelectedImage:[_selectedTabBarItemImages objectAtIndex:i]];
     }
 }
 
@@ -158,15 +160,15 @@
  
  */
 
-- (void)setTabBarItemUnselectedImages:(NSArray *)tabBarItemUnselectedImages
+- (void)setUnselectedTabBarItemImages:(NSArray *)unselectedTabBarItemImages
 {
-    _tabBarItemUnselectedImages = [tabBarItemUnselectedImages copy];
+    _unselectedTabBarItemImages = [unselectedTabBarItemImages copy];
     for (int i = 0; i < [self.tabBar.items count]; i++) {
-        if (i >= [_tabBarItemUnselectedImages count]) {
+        if (i >= [_unselectedTabBarItemImages count]) {
             return;
         }
         HPTabBarItem *item = [self.tabBar.items objectAtIndex:i];
-        [item setUnselectedImage:[_tabBarItemUnselectedImages objectAtIndex:i]];
+        [item setUnselectedImage:[_unselectedTabBarItemImages objectAtIndex:i]];
     }
 }
 
@@ -176,15 +178,15 @@
  
  */
 
-- (void)setTabBarItemDisableImages:(NSArray *)tabBarItemDisableImages
+- (void)setDisableTabBarItemImages:(NSArray *)disableTabBarItemImages
 {
-    _tabBarItemDisableImages = [tabBarItemDisableImages copy];
+    _disableTabBarItemImages = [disableTabBarItemImages copy];
     for (int i = 0; i < [self.tabBar.items count]; i++) {
-        if (i >= [_tabBarItemDisableImages count]) {
+        if (i >= [_disableTabBarItemImages count]) {
             return;
         }
         HPTabBarItem *item = [self.tabBar.items objectAtIndex:i];
-        [item setDisableImage:[_tabBarItemDisableImages objectAtIndex:i]];
+        [item setDisableImage:[_disableTabBarItemImages objectAtIndex:i]];
     }
 }
 
@@ -194,15 +196,15 @@
  
  */
 
-- (void)setTabBarItemtranslucentValues:(NSArray *)tabBarItemtranslucentValues
+- (void)setTranslucentTabBarItemValues:(NSArray *)translucentTabBarItemValues
 {
-    _tabBarItemtranslucentValues = [tabBarItemtranslucentValues copy];
+    _translucentTabBarItemValues = [translucentTabBarItemValues copy];
     for (int i = 0; i < [self.tabBar.items count]; i++) {
-        if (i >= [_tabBarItemtranslucentValues count]) {
+        if (i >= [_translucentTabBarItemValues count]) {
             return;
         }
         HPTabBarItem *item = [self.tabBar.items objectAtIndex:i];
-        [item setTranslucent:[[_tabBarItemtranslucentValues objectAtIndex:i] floatValue]];
+        [item setTranslucent:[[_translucentTabBarItemValues objectAtIndex:i] floatValue]];
     }
 }
 
@@ -226,21 +228,27 @@
             // Set tabBar image for state selected, unselected and disable.
             // It's necessary because you set array of image before you set viewcontrollers.
             
-            if (_tabBarItemselectedImages) {
-                if (i < [_tabBarItemDisableImages count]) {
-                    [tabBarItem setSelectedImage:[_tabBarItemselectedImages objectAtIndex:i]];
+            if (_selectedTabBarItemImages) {
+                if (i < [_selectedTabBarItemImages count]) {
+                    [tabBarItem setSelectedImage:[_selectedTabBarItemImages objectAtIndex:i]];
                 }
             }
             
-            if (_tabBarItemUnselectedImages) {
-                if (i < [_tabBarItemUnselectedImages count]) {
-                    [tabBarItem setSelectedImage:[_tabBarItemUnselectedImages objectAtIndex:i]];
+            if (_unselectedTabBarItemImages) {
+                if (i < [_unselectedTabBarItemImages count]) {
+                    [tabBarItem setSelectedImage:[_unselectedTabBarItemImages objectAtIndex:i]];
                 }
             }
             
-            if (_tabBarItemDisableImages) {
-                if (i < [_tabBarItemDisableImages count]) {
-                    [tabBarItem setSelectedImage:[_tabBarItemDisableImages objectAtIndex:i]];
+            if (_disableTabBarItemImages) {
+                if (i < [_disableTabBarItemImages count]) {
+                    [tabBarItem setSelectedImage:[_disableTabBarItemImages objectAtIndex:i]];
+                }
+            }
+            
+            if (_translucentTabBarItemValues) {
+                if (i < [_translucentTabBarItemValues count]) {
+                    [tabBarItem setTranslucent:[[_translucentTabBarItemValues objectAtIndex:i] floatValue]];
                 }
             }
             
@@ -266,6 +274,51 @@
     HPTabBarItem *item = [self.tabBar.items objectAtIndex:index];
     [item setBadgeCount:count];
 }
+
+/*
+ 
+ - Set tab bar hidden with animated.
+ 
+ */
+
+- (void)setTabBarHidden:(BOOL)hidden animated:(BOOL)animated
+{
+    _tabBarHidden = hidden;
+    CGRect frame = self.view.bounds;
+    if (hidden) {
+        frame.origin.x = 0;
+        frame.origin.y = CGRectGetHeight(frame);
+    } else {
+        frame.origin.y = CGRectGetHeight(frame)-self.tabBarHeight;
+    }
+    if (frame.origin.y == CGRectGetMinY(self.tabBar.frame)) {
+        return;
+    }
+    if (animated) {
+        [self.tabBar setHidden:NO];
+        [UIView animateWithDuration:0.25 animations:^{
+            [self.tabBar setFrame:frame];
+        } completion:^(BOOL finished) {
+            [self.tabBar setHidden:YES];
+        }];
+    } else {
+        [self.tabBar setFrame:frame];
+        [self.tabBar setHidden:NO];
+    }
+}
+
+/*
+ 
+ - Set tab bar hidden without animated.
+ 
+ */
+
+- (void)setTabBarHidden:(BOOL)tabBarHidden
+{
+    [self setTabBarHidden:YES animated:NO];
+}
+
+#pragma mark - Implement HPTabBar protocol
 
 /*
  

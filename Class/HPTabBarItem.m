@@ -78,7 +78,7 @@
     
     if (self.badgeCount>0) {
         CGSize badgeSize = CGSizeZero;
-        NSString *badgeString = [NSString stringWithFormat:@"%d", self.badgeCount];
+        NSString *badgeString = [NSString stringWithFormat:@"%ld", (long)self.badgeCount];
         
         // Caculator badge string size
         badgeSize = [badgeString boundingRectWithSize:CGSizeMake(frameSize.width, 20)

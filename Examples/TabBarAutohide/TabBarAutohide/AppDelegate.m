@@ -37,8 +37,8 @@
         [unSelectedImages addObject:[UIImage imageNamed:@"meo"]];
     }
     HPTabBarController *tabBarController = [[HPTabBarController alloc] initWithViewControllers:viewControllers];
-    [tabBarController setTabBarItemselectedImages:selectedImages];
-    [tabBarController setTabBarItemUnselectedImages:unSelectedImages];
+    [tabBarController setSelectedTabBarItemImages:selectedImages];
+    [tabBarController setUnselectedTabBarItemImages:unSelectedImages];
     [tabBarController setBagesCount:999 atIndex:0];
     [self.window setRootViewController:tabBarController];
     [self.window makeKeyAndVisible];

@@ -59,6 +59,8 @@
 
 @property (nonatomic, getter=isTabBarHidden) BOOL tabBarHidden;
 
+- (void)setTabBarHidden:(BOOL)hidden animated:(BOOL)animated;
+
 /*
  
  - Custom init with array of view controller.
@@ -73,7 +75,7 @@
  
 */
 
-@property (nonatomic, strong) NSArray *tabBarItemselectedImages;
+@property (nonatomic, strong) NSArray *selectedTabBarItemImages;
 
 /*
  
@@ -81,7 +83,7 @@
  
  */
 
-@property (nonatomic, strong) NSArray *tabBarItemUnselectedImages;
+@property (nonatomic, strong) NSArray *unselectedTabBarItemImages;
 
 /*
  
@@ -89,7 +91,7 @@
  
  */
 
-@property (nonatomic, strong) NSArray *tabBarItemDisableImages;
+@property (nonatomic, strong) NSArray *disableTabBarItemImages;
 
 /*
  
@@ -97,7 +99,7 @@
  
  */
 
-@property (nonatomic, strong) NSArray *tabBarItemtranslucentValues;
+@property (nonatomic, strong) NSArray *translucentTabBarItemValues;
 
 
 /*
