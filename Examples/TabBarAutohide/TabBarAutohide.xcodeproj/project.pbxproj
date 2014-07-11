@@ -16,6 +16,8 @@
 		113DCBB7196E741600E6A347 /* HPTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DCBB6196E741600E6A347 /* HPTabBar.m */; };
 		113DCBBA196E8C8400E6A347 /* HPTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DCBB9196E8C8400E6A347 /* HPTabBarItem.m */; };
 		114E4286196EDF980090FD93 /* meoBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = 114E4285196EDF980090FD93 /* meoBlue.png */; };
+		11951AA1197040C000AFC0CE /* UIViewController+HPTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11951AA0197040C000AFC0CE /* UIViewController+HPTabBarController.m */; };
+		11951AA61970415100AFC0CE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11951AA51970415100AFC0CE /* ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,10 @@
 		113DCBB8196E8C8400E6A347 /* HPTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPTabBarItem.h; path = ../../../Class/HPTabBarItem.h; sourceTree = "<group>"; };
 		113DCBB9196E8C8400E6A347 /* HPTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HPTabBarItem.m; path = ../../../Class/HPTabBarItem.m; sourceTree = "<group>"; };
 		114E4285196EDF980090FD93 /* meoBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meoBlue.png; sourceTree = "<group>"; };
+		11951A9F197040C000AFC0CE /* UIViewController+HPTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+HPTabBarController.h"; path = "../../../Class/UIViewController+HPTabBarController.h"; sourceTree = "<group>"; };
+		11951AA0197040C000AFC0CE /* UIViewController+HPTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+HPTabBarController.m"; path = "../../../Class/UIViewController+HPTabBarController.m"; sourceTree = "<group>"; };
+		11951AA41970415100AFC0CE /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		11951AA51970415100AFC0CE /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,12 +132,8 @@
 		113DCBAE196E48DE00E6A347 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				113DCBB5196E741600E6A347 /* HPTabBar.h */,
-				113DCBB6196E741600E6A347 /* HPTabBar.m */,
-				113DCBB8196E8C8400E6A347 /* HPTabBarItem.h */,
-				113DCBB9196E8C8400E6A347 /* HPTabBarItem.m */,
-				113DCBAF196E491400E6A347 /* HPTabBarController.h */,
-				113DCBB0196E491400E6A347 /* HPTabBarController.m */,
+				11951AA31970410D00AFC0CE /* ViewController */,
+				11951AA2197040FB00AFC0CE /* Class */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -143,6 +145,30 @@
 				113DCBB2196E505F00E6A347 /* meo.png */,
 			);
 			name = Icons;
+			sourceTree = "<group>";
+		};
+		11951AA2197040FB00AFC0CE /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				11951A9F197040C000AFC0CE /* UIViewController+HPTabBarController.h */,
+				11951AA0197040C000AFC0CE /* UIViewController+HPTabBarController.m */,
+				113DCBB5196E741600E6A347 /* HPTabBar.h */,
+				113DCBB6196E741600E6A347 /* HPTabBar.m */,
+				113DCBB8196E8C8400E6A347 /* HPTabBarItem.h */,
+				113DCBB9196E8C8400E6A347 /* HPTabBarItem.m */,
+				113DCBAF196E491400E6A347 /* HPTabBarController.h */,
+				113DCBB0196E491400E6A347 /* HPTabBarController.m */,
+			);
+			name = Class;
+			sourceTree = "<group>";
+		};
+		11951AA31970410D00AFC0CE /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				11951AA41970415100AFC0CE /* ViewController.h */,
+				11951AA51970415100AFC0CE /* ViewController.m */,
+			);
+			name = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,8 +271,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11951AA61970415100AFC0CE /* ViewController.m in Sources */,
 				113DCBB1196E491400E6A347 /* HPTabBarController.m in Sources */,
 				113DCBB7196E741600E6A347 /* HPTabBar.m in Sources */,
+				11951AA1197040C000AFC0CE /* UIViewController+HPTabBarController.m in Sources */,
 				113DCBBA196E8C8400E6A347 /* HPTabBarItem.m in Sources */,
 				113DCB91196E476000E6A347 /* AppDelegate.m in Sources */,
 				113DCB8E196E475F00E6A347 /* main.m in Sources */,

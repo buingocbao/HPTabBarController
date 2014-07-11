@@ -14,16 +14,22 @@
          location = "group:Examples/TabBarAutohide/TabBarAutohide/../../../Class/HPTabBarItem.m">
       </FileRef>
       <FileRef
+         location = "group:Class/HPTabBar.h">
+      </FileRef>
+      <FileRef
+         location = "group:Class/HPTabBar.m">
+      </FileRef>
+      <FileRef
          location = "group:Class/HPTabBarController.h">
       </FileRef>
       <FileRef
          location = "group:Class/HPTabBarController.m">
       </FileRef>
       <FileRef
-         location = "group:Class/HPTabBar.h">
+         location = "group:Class/UIViewController+HPTabBarController.h">
       </FileRef>
       <FileRef
-         location = "group:Class/HPTabBar.m">
+         location = "group:Class/UIViewController+HPTabBarController.m">
       </FileRef>
    </Group>
 </Workspace>

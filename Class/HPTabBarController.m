@@ -293,14 +293,15 @@
 - (void)setTabBarHidden:(BOOL)hidden animated:(BOOL)animated
 {
     _tabBarHidden = hidden;
-    CGRect frame = self.view.bounds;
+    CGRect frame = self.tabBar.frame;
+    CGRect viewFrame = self.view.frame;
     if (hidden) {
         frame.origin.x = 0;
-        frame.origin.y = CGRectGetHeight(frame);
+        frame.origin.y = CGRectGetHeight(viewFrame);
     } else {
-        frame.origin.y = CGRectGetHeight(frame)-self.tabBarHeight;
+        frame.origin.y = CGRectGetHeight(viewFrame)-self.tabBarHeight;
     }
-    if (frame.origin.y == CGRectGetMinY(self.tabBar.frame)) {
+    if (frame.origin.y == self.tabBar.frame.origin.y) {
         return;
     }
     if (animated) {
@@ -308,11 +309,11 @@
         [UIView animateWithDuration:0.25 animations:^{
             [self.tabBar setFrame:frame];
         } completion:^(BOOL finished) {
-            [self.tabBar setHidden:YES];
+            [self.tabBar setHidden:_tabBarHidden];
         }];
     } else {
         [self.tabBar setFrame:frame];
-        [self.tabBar setHidden:NO];
+        [self.tabBar setHidden:_tabBarHidden];
     }
 }
 
@@ -324,7 +325,7 @@
 
 - (void)setTabBarHidden:(BOOL)tabBarHidden
 {
-    [self setTabBarHidden:YES animated:NO];
+    [self setTabBarHidden:tabBarHidden animated:NO];
 }
 
 #pragma mark - Implement HPTabBar protocol

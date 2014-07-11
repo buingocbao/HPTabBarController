@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "HPTabBarController.h"
+#import "ViewController.h"
 
 @interface AppDelegate ()
 
@@ -26,7 +27,7 @@
     NSMutableArray *unSelectedImages = [[NSMutableArray alloc] init];
 
     for (int i=0; i<5; i++) {
-        UIViewController *viewController = [[UIViewController alloc] init];
+        ViewController *viewController = [[ViewController alloc] init];
         if (i%2==0) {
             [viewController.view setBackgroundColor:[UIColor greenColor]];
         } else {
