@@ -9,7 +9,24 @@
 #import <UIKit/UIKit.h>
 #import "HPTabBar.h"
 
+@protocol HPTabBarControllerDelegate
+
+@optional
+
+- (void)hPTabBarControllerDidSelectedViewController:(UIViewController *)viewController atIndex:(NSInteger)index;
+
+@end
+
 @interface HPTabBarController : UIViewController
+
+
+/*
+ 
+ - HPTabBarDelegate.
+ 
+ */
+
+@property (nonatomic, weak) id <HPTabBarControllerDelegate> hPTabBarControllerDelegate;
 
 /*
  

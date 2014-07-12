@@ -12,7 +12,8 @@
 @protocol HPTabBarDelegate
 
 @required
-- (void)didSelectedAtIndex:(NSInteger)index;
+
+- (void)hPTabBarDidSelectedAtIndex:(NSInteger)index;
 
 @end
 

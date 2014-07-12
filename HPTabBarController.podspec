@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "HPTabBarController"
-  s.version      = "0.0.3"
+  s.version      = "0.0.5"
   s.summary      = "HPTabBarController is new style of cocoa controller"
   s.homepage     = "http://facebook.com/huyphams"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"

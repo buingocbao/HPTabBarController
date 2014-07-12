@@ -77,7 +77,17 @@
     NSInteger index  = [self.items indexOfObject:item];
     [item setSelected:YES];
     [self setSelectedItem:item];
-    [self.delegate didSelectedAtIndex:index];
+    [self.delegate hPTabBarDidSelectedAtIndex:index];
+}
+
+- (void)setSelectedItem:(HPTabBarItem *)selectedItem
+{
+    if (_selectedItem == selectedItem) {
+        return;
+    }
+    [_selectedItem setSelected:NO];
+    _selectedItem = selectedItem;
+    [_selectedItem setSelected:YES];
 }
 
 @end

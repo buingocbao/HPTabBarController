@@ -16,6 +16,7 @@
 @implementation HPTabBarController
 {
     UIView *_contentView;
+    BOOL isAnimating;
 }
 
 - (instancetype)initWithViewControllers:(NSArray *)viewControllers
@@ -117,9 +118,10 @@
     if (selectedIndex >= [self.viewControllers count]) {
         return;
     }
-    
+
     // Set selected index value
     _selectedIndex = selectedIndex;
+    [self.tabBar setSelectedItem:[self.tabBar.items objectAtIndex:selectedIndex]];
     
     // Remove current view controller.
     if ([self selectedViewController]) {
@@ -134,15 +136,6 @@
     [self addChildViewController:self.selectedViewController];
     [self.contentView addSubview:self.selectedViewController.view];
     [[self selectedViewController] didMoveToParentViewController:self];
-    
-    if (self.tabBar.items) {
-        HPTabBarItem *item = [self.tabBar.items objectAtIndex:_selectedIndex];
-        if (![item isSelected]) {
-            [item setSelected:YES];
-            [self.tabBar setSelectedItem:item];
-        }
-    }
-    
 }
 
 /*
@@ -264,7 +257,7 @@
         }
         if ([tabBarItems count] > 0) {
             [self.tabBar setItems:tabBarItems];
-            [self setSelectedIndex:0];
+            [self hPTabBarDidSelectedAtIndex:0];
         }
     }
 }
@@ -292,6 +285,10 @@
 
 - (void)setTabBarHidden:(BOOL)hidden animated:(BOOL)animated
 {
+    // Detect if when tarBar is hidden of is animating.
+    if (_tabBarHidden==hidden || isAnimating) {
+        return;
+    }
     _tabBarHidden = hidden;
     CGRect frame = self.tabBar.frame;
     CGRect viewFrame = self.view.frame;
@@ -305,10 +302,12 @@
         return;
     }
     if (animated) {
+        isAnimating = YES;
         [self.tabBar setHidden:NO];
         [UIView animateWithDuration:0.25 animations:^{
             [self.tabBar setFrame:frame];
         } completion:^(BOOL finished) {
+            isAnimating = NO;
             [self.tabBar setHidden:_tabBarHidden];
         }];
     } else {
@@ -336,9 +335,11 @@
 
 */
 
-- (void)didSelectedAtIndex:(NSInteger)index
+- (void)hPTabBarDidSelectedAtIndex:(NSInteger)index
 {
     [self setSelectedIndex:index];
+    UIViewController *viewController = [self.viewControllers objectAtIndex:index];
+    [self.hPTabBarControllerDelegate hPTabBarControllerDidSelectedViewController:viewController atIndex:index];
 }
 
 @end
