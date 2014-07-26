@@ -35,6 +35,7 @@
         for (int i = 0; i < [_items count]; i++) {
             HPTabBarItem *item = [_items objectAtIndex:i];
             [item addTarget:self action:@selector(didSelectedAtIndex:) forControlEvents:UIControlEventTouchDown];
+            [item addTarget:self action:@selector(didDoubleTouchAtIndex:withEvent:) forControlEvents:UIControlEventTouchDownRepeat];
             [self addSubview:item];
         }
     }
@@ -78,6 +79,16 @@
     [item setSelected:YES];
     [self setSelectedItem:item];
     [self.delegate hPTabBarDidSelectedAtIndex:index];
+}
+
+-(void)didDoubleTouchAtIndex:(id)sender withEvent:(UIEvent*)event {
+    
+    HPTabBarItem *item = (HPTabBarItem *)sender;
+    NSInteger index  = [self.items indexOfObject:item];
+    UITouch* touch = [[event allTouches] anyObject];
+    if ([touch tapCount] == 2) {
+        [self.delegate hpTabBarDidDoubleTouchAtIndex:index];
+    }
 }
 
 - (void)setSelectedItem:(HPTabBarItem *)selectedItem

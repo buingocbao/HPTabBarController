@@ -7,6 +7,7 @@
 //
 
 #import "HPTabBarController.h"
+
 #import "HPTabBarItem.h"
 
 @interface HPTabBarController () <HPTabBarDelegate>
@@ -24,8 +25,8 @@
     if (!(self = [super init])) {
         return nil;
     }
+    [self commonInit];
     [self setViewControllers:viewControllers];
-    [self setTabBarHeight:60];
     return self;
 }
 
@@ -34,15 +35,21 @@
     if (!(self = [super init])) {
         return nil;
     }
-    [self setTabBarHeight:60];
+    [self commonInit];
     return self;
+}
+
+- (void)commonInit
+{
+    [self setTabBarHeight:60];
+    [self setEnableDoucbleTouch:YES];
 }
 
 #pragma mark - Init View
 
-/*
+/**
  
- - Init content view.
+ - Init content view. <br/>
  - Content view contain view.
  
 */
@@ -58,9 +65,9 @@
     return _contentView;
 }
 
-/*
+/**
  
- - Init tabBar.
+ - Init tabBar. <br/>
  - TabBar contain bar button.
  
 */
@@ -78,7 +85,7 @@
     return _tabBar;
 }
 
-/*
+/**s
  
  - Set TabBar Height.
  
@@ -136,6 +143,39 @@
     [self addChildViewController:self.selectedViewController];
     [self.contentView addSubview:self.selectedViewController.view];
     [[self selectedViewController] didMoveToParentViewController:self];
+}
+
+/*
+ 
+ - Set selected view controller.
+ 
+ */
+
+- (void)setSelectedViewController:(UIViewController *)selectedViewController
+{
+    if ([self.viewControllers containsObject:selectedViewController]) {
+        _selectedViewController = selectedViewController;
+        NSInteger index = [self.viewControllers indexOfObject:selectedViewController];
+        
+        // Set selected index value
+        _selectedIndex = index;
+        [self.tabBar setSelectedItem:[self.tabBar.items objectAtIndex:index]];
+        
+        // Remove current view controller.
+        if ([self selectedViewController]) {
+            [[self selectedViewController] willMoveToParentViewController:nil];
+            [[[self selectedViewController] view] removeFromSuperview];
+            [[self selectedViewController] removeFromParentViewController];
+        }
+        
+        // Set present controller
+        [self.selectedViewController.view setFrame:self.contentView.bounds];
+        [self addChildViewController:selectedViewController];
+        [self.contentView addSubview:selectedViewController.view];
+        [selectedViewController didMoveToParentViewController:self];
+    } else {
+        _selectedViewController = nil;
+    }
 }
 
 /*
@@ -286,7 +326,7 @@
 - (void)setTabBarHidden:(BOOL)hidden animated:(BOOL)animated
 {
     // Detect if when tarBar is hidden of is animating.
-    if (_tabBarHidden==hidden || isAnimating) {
+    if (_tabBarHidden == hidden || isAnimating) {
         return;
     }
     _tabBarHidden = hidden;
@@ -339,7 +379,20 @@
 {
     [self setSelectedIndex:index];
     UIViewController *viewController = [self.viewControllers objectAtIndex:index];
-    [self.hPTabBarControllerDelegate hPTabBarControllerDidSelectedViewController:viewController atIndex:index];
+    if ([self.hPTabBarControllerDelegate respondsToSelector:@selector(hPTabBarControllerDidSelectedViewController:atIndex:)]) {
+        [self.hPTabBarControllerDelegate hPTabBarControllerDidSelectedViewController:viewController atIndex:index];
+    }
+}
+
+- (void)hpTabBarDidDoubleTouchAtIndex:(NSInteger)index
+{
+    UIViewController *viewController = [self.viewControllers objectAtIndex:index];
+    if ([self.hPTabBarControllerDelegate respondsToSelector:@selector(hPTabBarControllerDidDoubleTouchViewController:atIndex:)]) {
+        [self.hPTabBarControllerDelegate hPTabBarControllerDidDoubleTouchViewController:viewController atIndex:index];
+    }
+    if (self.isEnableDoubleTouch && [viewController isKindOfClass:[UINavigationController class]]) {
+        [(UINavigationController *)viewController popToRootViewControllerAnimated:YES];
+    }
 }
 
 @end

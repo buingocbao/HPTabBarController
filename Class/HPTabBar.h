@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+
 #import "HPTabBarItem.h"
 
 @protocol HPTabBarDelegate
@@ -14,6 +15,8 @@
 @required
 
 - (void)hPTabBarDidSelectedAtIndex:(NSInteger)index;
+
+- (void)hpTabBarDidDoubleTouchAtIndex:(NSInteger)index;
 
 @end
 

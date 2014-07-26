@@ -26,7 +26,7 @@
     NSMutableArray *selectedImages = [[NSMutableArray alloc] init];
     NSMutableArray *unSelectedImages = [[NSMutableArray alloc] init];
 
-    for (int i=0; i<5; i++) {
+    for (int i=0; i<4; i++) {
         ViewController *viewController = [[ViewController alloc] init];
         if (i%2==0) {
             [viewController.view setBackgroundColor:[UIColor greenColor]];
@@ -37,6 +37,21 @@
         [selectedImages addObject:[UIImage imageNamed:@"meoBlue"]];
         [unSelectedImages addObject:[UIImage imageNamed:@"meo"]];
     }
+    
+    ViewController *viewController = [[ViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    for (int i=0; i<4; i++) {
+        UIViewController *view = [[UIViewController alloc] init];
+        if (i%2==0) {
+            [view.view setBackgroundColor:[UIColor whiteColor]];
+        } else {
+            [view.view setBackgroundColor:[UIColor grayColor]];
+        }
+        [viewController.navigationController pushViewController:view animated:NO];
+        [selectedImages addObject:[UIImage imageNamed:@"meoBlue"]];
+        [unSelectedImages addObject:[UIImage imageNamed:@"meo"]];
+    }
+    [viewControllers addObject:navigationController];
     HPTabBarController *tabBarController = [[HPTabBarController alloc] initWithViewControllers:viewControllers];
     [tabBarController setSelectedTabBarItemImages:selectedImages];
     [tabBarController setUnselectedTabBarItemImages:unSelectedImages];
