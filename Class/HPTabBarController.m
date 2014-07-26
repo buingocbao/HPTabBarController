@@ -43,6 +43,7 @@
 {
     [self setTabBarHeight:60];
     [self setEnableDoucbleTouch:YES];
+    [self setEnableTouchAgain:YES];
 }
 
 #pragma mark - Init View
@@ -387,11 +388,21 @@
 - (void)hpTabBarDidDoubleTouchAtIndex:(NSInteger)index
 {
     UIViewController *viewController = [self.viewControllers objectAtIndex:index];
-    if ([self.hPTabBarControllerDelegate respondsToSelector:@selector(hPTabBarControllerDidDoubleTouchViewController:atIndex:)]) {
+    if (self.isEnableDoubleTouch && [self.hPTabBarControllerDelegate respondsToSelector:@selector(hPTabBarControllerDidDoubleTouchViewController:atIndex:)]) {
         [self.hPTabBarControllerDelegate hPTabBarControllerDidDoubleTouchViewController:viewController atIndex:index];
     }
-    if (self.isEnableDoubleTouch && [viewController isKindOfClass:[UINavigationController class]]) {
-        [(UINavigationController *)viewController popToRootViewControllerAnimated:YES];
+}
+
+- (void)hpTabBarDidSelectedAgainAtIndex:(NSInteger)index
+{
+    UIViewController *viewController = [self.viewControllers objectAtIndex:index];
+    if (self.isEnableTouchAgain) {
+        if ([viewController isKindOfClass:[UINavigationController class]]) {
+            [(UINavigationController *)viewController popToRootViewControllerAnimated:YES];
+        }
+        if ([self.hPTabBarControllerDelegate respondsToSelector:@selector(hPTabBarControllerDidTouchAgainViewController:atIndex:)]) {
+            [self.hPTabBarControllerDelegate hPTabBarControllerDidTouchAgainViewController:viewController atIndex:index];
+        }
     }
 }
 

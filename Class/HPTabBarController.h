@@ -18,6 +18,8 @@
 
 - (void)hPTabBarControllerDidDoubleTouchViewController:(UIViewController *)viewController atIndex:(NSInteger)index;
 
+- (void)hPTabBarControllerDidTouchAgainViewController:(UIViewController *)viewController atIndex:(NSInteger)index;
+
 @end
 
 @interface HPTabBarController : UIViewController
@@ -132,10 +134,13 @@
 
 /**
  
- - Set pop all view when double touch on tabbar item.
+ - Set enable double touch on tabbar item.
+ - Set enable touch again on tabbar.
  
  */
 
 @property (nonatomic, getter=isEnableDoubleTouch) BOOL enableDoucbleTouch;
+
+@property (nonatomic, getter=isEnableTouchAgain) BOOL enableTouchAgain;
 
 @end

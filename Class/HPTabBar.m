@@ -68,14 +68,15 @@
 
 - (void)didSelectedAtIndex:(id)sender
 {
+    HPTabBarItem *item = (HPTabBarItem *)sender;
+    NSInteger index  = [self.items indexOfObject:item];
     if (self.selectedItem) {
         if (self.selectedItem == sender) {
+            [self.delegate hpTabBarDidSelectedAgainAtIndex:index];
             return;
         }
         [self.selectedItem setSelected:NO];
     }
-    HPTabBarItem *item = (HPTabBarItem *)sender;
-    NSInteger index  = [self.items indexOfObject:item];
     [item setSelected:YES];
     [self setSelectedItem:item];
     [self.delegate hPTabBarDidSelectedAtIndex:index];

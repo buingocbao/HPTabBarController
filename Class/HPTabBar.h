@@ -18,6 +18,8 @@
 
 - (void)hpTabBarDidDoubleTouchAtIndex:(NSInteger)index;
 
+- (void)hpTabBarDidSelectedAgainAtIndex:(NSInteger)index;
+
 @end
 
 @interface HPTabBar : UIView
