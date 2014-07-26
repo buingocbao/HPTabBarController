@@ -397,11 +397,11 @@
 {
     UIViewController *viewController = [self.viewControllers objectAtIndex:index];
     if (self.isEnableTouchAgain) {
-        if ([viewController isKindOfClass:[UINavigationController class]]) {
-            [(UINavigationController *)viewController popToRootViewControllerAnimated:YES];
-        }
         if ([self.hPTabBarControllerDelegate respondsToSelector:@selector(hPTabBarControllerDidTouchAgainViewController:atIndex:)]) {
             [self.hPTabBarControllerDelegate hPTabBarControllerDidTouchAgainViewController:viewController atIndex:index];
+        }
+        if ([viewController isKindOfClass:[UINavigationController class]]) {
+            [(UINavigationController *)viewController popToRootViewControllerAnimated:YES];
         }
     }
 }
