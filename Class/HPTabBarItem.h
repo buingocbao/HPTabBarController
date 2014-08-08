@@ -10,7 +10,7 @@
 
 @interface HPTabBarItem : UIControl
 
-/*
+/**
 
  - Item Height
 
@@ -18,7 +18,7 @@
 
 @property CGFloat itemHeight;
 
-/*
+/**
 
  - Item title
 
@@ -53,7 +53,7 @@
 @property (nonatomic) UIColor *badgeTextColor;
 
 
-/*
+/**
  
  - Bar Item translucent
  
@@ -61,7 +61,7 @@
 
 @property (nonatomic) CGFloat translucent;
 
-/*
+/**
  
  - The offset for the rectangle around the tab bar item's badge.
 

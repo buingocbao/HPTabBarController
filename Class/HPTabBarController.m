@@ -12,12 +12,15 @@
 
 @interface HPTabBarController () <HPTabBarDelegate>
 
+@property (nonatomic, weak) id activeObject;
+
 @end
 
 @implementation HPTabBarController
 {
     UIView *_contentView;
     BOOL isAnimating;
+    CGFloat lastOffset;
 }
 
 - (instancetype)initWithViewControllers:(NSArray *)viewControllers
@@ -404,6 +407,34 @@
             [(UINavigationController *)viewController popToRootViewControllerAnimated:YES];
         }
     }
+}
+
+/*
+ 
+ - Notification.
+ 
+ */
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if (![keyPath isEqualToString:@"contentOffset"]) {
+        return;
+    }
+    if (![object isEqual:self.activeObject]) {
+        [self setActiveObject:object];
+        return;
+    }
+    UIScrollView *scrollView  = (UIScrollView *)object;
+    UIEdgeInsets edge = scrollView.contentInset;
+    CGFloat contentOffset = scrollView.contentOffset.y+edge.top;
+    CGFloat delta = lastOffset - contentOffset;
+    // current > 0 to detect when scoll to top.
+    if (contentOffset > 0 && delta < -2.0 && contentOffset < scrollView.contentSize.height-scrollView.bounds.size.height+edge.top) {
+        [self setTabBarHidden:YES animated:YES];
+    }else if (delta > 2.0 || (delta > 2.0 &&  contentOffset > scrollView.contentSize.height - scrollView.bounds.size.height+edge.bottom)) {
+        [self setTabBarHidden:NO animated:YES];
+    }
+    lastOffset = contentOffset;
 }
 
 @end

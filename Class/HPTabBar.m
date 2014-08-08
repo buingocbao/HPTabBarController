@@ -16,6 +16,9 @@
         return nil;
     }
     [self setBackgroundColor:[UIColor clearColor]];
+    [self.layer setShadowColor:[UIColor blackColor].CGColor];
+    [self.layer setShadowOffset:CGSizeMake(0, 1.0f)];
+    [self.layer setShadowOpacity:1.0f];
     return self;
 }
 
