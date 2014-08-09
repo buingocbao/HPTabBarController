@@ -420,13 +420,16 @@
     if (![keyPath isEqualToString:@"contentOffset"]) {
         return;
     }
-    if (![object isEqual:self.activeObject]) {
-        [self setActiveObject:object];
-        return;
-    }
     UIScrollView *scrollView  = (UIScrollView *)object;
     UIEdgeInsets edge = scrollView.contentInset;
     CGFloat contentOffset = scrollView.contentOffset.y+edge.top;
+
+    if (![object isEqual:self.activeObject]) {
+        [self setActiveObject:object];
+        lastOffset = contentOffset;
+        return;
+    }
+    
     CGFloat delta = lastOffset - contentOffset;
     // current > 0 to detect when scoll to top.
     if (contentOffset > 0 && delta < -2.0 && contentOffset < scrollView.contentSize.height-scrollView.bounds.size.height+edge.top) {
