@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 CoreDump. All rights reserved.
 //
 
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
 #import "HPTabBarItem.h"
 
 @implementation HPTabBarItem {
@@ -79,10 +81,14 @@
         NSString *badgeString = [NSString stringWithFormat:@"%ld", (long)self.badgeCount];
         
         // Caculator badge string size
-        badgeSize = [badgeString boundingRectWithSize:CGSizeMake(frameSize.width, 20)
-                                              options:NSStringDrawingUsesLineFragmentOrigin
-                                           attributes:@{NSFontAttributeName: self.badgeTextFont}
-                                              context:nil].size;
+        if (SYSTEM_VERSION_LESS_THAN(@"7")) {
+            badgeSize = [badgeString sizeWithFont:self.badgeTextFont constrainedToSize:CGSizeMake(frameSize.width, 20)];
+        } else {
+            badgeSize = [badgeString boundingRectWithSize:CGSizeMake(frameSize.width, 20)
+                                                  options:NSStringDrawingUsesLineFragmentOrigin
+                                               attributes:@{NSFontAttributeName: self.badgeTextFont}
+                                                  context:nil].size;
+        }
         
         if (badgeSize.width < badgeSize.height) {
             badgeSize = CGSizeMake(badgeSize.height, badgeSize.height);
@@ -110,10 +116,19 @@
                                               NSForegroundColorAttributeName: [self badgeTextColor],
                                               NSParagraphStyleAttributeName: badgeTextStyle };
         // Draw text
-        [badgeString drawInRect:CGRectMake(CGRectGetMinX(badgeBackgroundFrame) + 2.0f,
-                                           CGRectGetMinY(badgeBackgroundFrame) + 2.0f,
+        if (SYSTEM_VERSION_LESS_THAN(@"7")) {
+            [badgeString drawInRect:CGRectMake(CGRectGetMinX(badgeBackgroundFrame) + 2.0,
+                                                     CGRectGetMinY(badgeBackgroundFrame) + 2.0,
+                                                     badgeSize.width, badgeSize.height)
+                           withFont:self.badgeTextFont
+                      lineBreakMode:NSLineBreakByTruncatingTail
+                          alignment:NSTextAlignmentCenter];
+        } else {
+            [badgeString drawInRect:CGRectMake(CGRectGetMinX(badgeBackgroundFrame) + 2.0,
+                                           CGRectGetMinY(badgeBackgroundFrame) + 2.0,
                                            badgeSize.width,
                                            badgeSize.height) withAttributes:badgeTextAttributes];
+        }
 
     }
 
