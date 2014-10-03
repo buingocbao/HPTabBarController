@@ -16,8 +16,7 @@
 
 }
 
-- (instancetype)init
-{
+- (instancetype)init {
     if (!(self = [super init])) {
         return nil;
     }
@@ -32,8 +31,7 @@
  
 */
 
-- (void)commonInit
-{
+- (void)commonInit {
     [self setBackgroundColor:[UIColor blackColor]];
     [self setTranslucent:1.0f];
     _badgeTextColor = [UIColor whiteColor];
@@ -49,8 +47,7 @@
  
 */
 
-- (void)drawRect:(CGRect)rect
-{
+- (void)drawRect:(CGRect)rect {
     [self setAlpha:self.translucent];
     UIImage *image = nil;
     CGSize imageSize = CGSizeZero;
@@ -76,10 +73,12 @@
                                  imageSize.height)];
     
     // DRAW BADGES
-    if (self.badgeCount>0) {
+    if (self.badgeCount>0 || self.badgeSymbol) {
         CGSize badgeSize = CGSizeZero;
-        NSString *badgeString = [NSString stringWithFormat:@"%ld", (long)self.badgeCount];
-        
+        NSString *badgeString = self.badgeSymbol;
+        if (self.badgeCount>0) {
+            badgeString = [NSString stringWithFormat:@"%ld", (long)self.badgeCount];
+        }
         // Caculator badge string size
         if (SYSTEM_VERSION_LESS_THAN(@"7")) {
             badgeSize = [badgeString sizeWithFont:self.badgeTextFont constrainedToSize:CGSizeMake(frameSize.width, 20)];
@@ -94,7 +93,7 @@
             badgeSize = CGSizeMake(badgeSize.height, badgeSize.height);
         }
         
-        CGRect badgeBackgroundFrame = CGRectMake(frameSize.width/2, 2.0f, badgeSize.width + 2.0f*2, badgeSize.height + 2.0f*2);
+        CGRect badgeBackgroundFrame = CGRectMake(frameSize.width/2, 2.0, badgeSize.width + 2.0*2, badgeSize.height + 2.0*2);
         
         // Fill backgroud color
         
@@ -133,6 +132,19 @@
     }
 
     CGContextRestoreGState(context);
+}
+
+- (void)setBadgeCount:(NSInteger)badgeCount {
+    _badgeCount = badgeCount;
+    if (_badgeCount<1) {
+        _badgeSymbol = nil;
+    }
+    [self setNeedsDisplay];
+}
+
+- (void)setBadgeSymbol:(NSString *)badgeSymbol {
+    _badgeSymbol = badgeSymbol;
+    [self setNeedsDisplay];
 }
 
 @end

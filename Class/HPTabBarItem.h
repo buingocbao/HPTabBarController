@@ -48,6 +48,8 @@
 
 @property (nonatomic) NSInteger badgeCount;
 
+@property (nonatomic, copy) NSString *badgeSymbol;
+
 @property (nonatomic) UIFont *badgeTextFont;
 
 @property (nonatomic) UIColor *badgeTextColor;
