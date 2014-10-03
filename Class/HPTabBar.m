@@ -10,8 +10,7 @@
 
 @implementation HPTabBar
 
-- (instancetype)init
-{
+- (instancetype)init {
     if (!(self = [super init])) {
         return nil;
     }
@@ -28,8 +27,7 @@
  
 */
 
-- (void)setItems:(NSArray *)items
-{
+- (void)setItems:(NSArray *)items {
     if (items && [items isKindOfClass:[NSArray class]]) {
         for (HPTabBarItem *item in items) {
             [item removeFromSuperview];
@@ -50,8 +48,7 @@
  
 */
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     if ([self.items count]<1) {
         return;
     }
@@ -69,8 +66,7 @@
  
 */
 
-- (void)didSelectedAtIndex:(id)sender
-{
+- (void)didSelectedAtIndex:(id)sender {
     HPTabBarItem *item = (HPTabBarItem *)sender;
     NSInteger index  = [self.items indexOfObject:item];
     if (self.selectedItem) {
@@ -95,8 +91,7 @@
     }
 }
 
-- (void)setSelectedItem:(HPTabBarItem *)selectedItem
-{
+- (void)setSelectedItem:(HPTabBarItem *)selectedItem {
     if (_selectedItem == selectedItem) {
         return;
     }

@@ -16,15 +16,13 @@
 
 @end
 
-@implementation HPTabBarController
-{
+@implementation HPTabBarController {
     UIView *_contentView;
     BOOL isAnimating;
     CGFloat lastOffset;
 }
 
-- (instancetype)initWithViewControllers:(NSArray *)viewControllers
-{
+- (instancetype)initWithViewControllers:(NSArray *)viewControllers {
     if (!(self = [super init])) {
         return nil;
     }
@@ -33,8 +31,7 @@
     return self;
 }
 
-- (instancetype)init
-{
+- (instancetype)init {
     if (!(self = [super init])) {
         return nil;
     }
@@ -42,8 +39,7 @@
     return self;
 }
 
-- (void)commonInit
-{
+- (void)commonInit {
     [self setTabBarHeight:60];
     [self setEnableDoucbleTouch:YES];
     [self setEnableTouchAgain:YES];
@@ -58,8 +54,7 @@
  
 */
 
-- (UIView *)contentView
-{
+- (UIView *)contentView {
     if (!_contentView) {
         _contentView = [[UIView alloc] init];
         [_contentView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|
@@ -76,8 +71,7 @@
  
 */
 
-- (HPTabBar *)tabBar
-{
+- (HPTabBar *)tabBar {
     if (!_tabBar) {
         _tabBar = [[HPTabBar alloc] init];
         [_tabBar setDelegate:self];
@@ -95,8 +89,7 @@
  
 */
 
-- (void)setTabBarHeight:(CGFloat)tabBarHeight
-{
+- (void)setTabBarHeight:(CGFloat)tabBarHeight {
     _tabBarHeight = tabBarHeight;
     [self.contentView setFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds))];
     [self.tabBar setFrame:CGRectMake(0, CGRectGetHeight(self.view.bounds)-_tabBarHeight, CGRectGetWidth(self.view.bounds), _tabBarHeight)];
@@ -109,8 +102,7 @@
  
  */
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.contentView];
     [self.view addSubview:self.tabBar];
@@ -123,8 +115,7 @@
  
  */
 
-- (void)setSelectedIndex:(NSUInteger)selectedIndex
-{
+- (void)setSelectedIndex:(NSUInteger)selectedIndex {
     // Selected index out range.
     if (selectedIndex >= [self.viewControllers count]) {
         return;
@@ -142,11 +133,17 @@
     }
     
     // Set present controller
-    [self setSelectedViewController:[self.viewControllers objectAtIndex:selectedIndex]];
+    UIViewController *viewController = [self.viewControllers objectAtIndex:selectedIndex];
+
+    [self setSelectedViewController:viewController];
     [self.selectedViewController.view setFrame:self.contentView.bounds];
     [self addChildViewController:self.selectedViewController];
     [self.contentView addSubview:self.selectedViewController.view];
     [[self selectedViewController] didMoveToParentViewController:self];
+    
+    if ([self.hPTabBarControllerDelegate respondsToSelector:@selector(hPTabBarControllerDidSelectedViewController:atIndex:)]) {
+        [self.hPTabBarControllerDelegate hPTabBarControllerDidSelectedViewController:viewController atIndex:selectedIndex];
+    }
 }
 
 /*
@@ -155,8 +152,7 @@
  
  */
 
-- (void)setSelectedViewController:(UIViewController *)selectedViewController
-{
+- (void)setSelectedViewController:(UIViewController *)selectedViewController {
     if ([self.viewControllers containsObject:selectedViewController]) {
         _selectedViewController = selectedViewController;
         NSInteger index = [self.viewControllers indexOfObject:selectedViewController];
@@ -188,8 +184,7 @@
  
 */
 
-- (void)setSelectedTabBarItemImages:(NSArray *)selectedTabBarItemImages
-{
+- (void)setSelectedTabBarItemImages:(NSArray *)selectedTabBarItemImages {
     _selectedTabBarItemImages = [selectedTabBarItemImages copy];
     for (int i = 0; i < [self.tabBar.items count]; i++) {
         if (i >= [_selectedTabBarItemImages count]) {
@@ -206,8 +201,7 @@
  
  */
 
-- (void)setUnselectedTabBarItemImages:(NSArray *)unselectedTabBarItemImages
-{
+- (void)setUnselectedTabBarItemImages:(NSArray *)unselectedTabBarItemImages {
     _unselectedTabBarItemImages = [unselectedTabBarItemImages copy];
     for (int i = 0; i < [self.tabBar.items count]; i++) {
         if (i >= [_unselectedTabBarItemImages count]) {
@@ -224,8 +218,7 @@
  
  */
 
-- (void)setDisableTabBarItemImages:(NSArray *)disableTabBarItemImages
-{
+- (void)setDisableTabBarItemImages:(NSArray *)disableTabBarItemImages {
     _disableTabBarItemImages = [disableTabBarItemImages copy];
     for (int i = 0; i < [self.tabBar.items count]; i++) {
         if (i >= [_disableTabBarItemImages count]) {
@@ -242,8 +235,7 @@
  
  */
 
-- (void)setTranslucentTabBarItemValues:(NSArray *)translucentTabBarItemValues
-{
+- (void)setTranslucentTabBarItemValues:(NSArray *)translucentTabBarItemValues {
     _translucentTabBarItemValues = [translucentTabBarItemValues copy];
     for (int i = 0; i < [self.tabBar.items count]; i++) {
         if (i >= [_translucentTabBarItemValues count]) {
@@ -261,8 +253,7 @@
  
 */
 
-- (void)setViewControllers:(NSArray *)viewControllers
-{
+- (void)setViewControllers:(NSArray *)viewControllers {
     if (viewControllers && [viewControllers isKindOfClass:[NSArray class]]) {
         _viewControllers = [viewControllers copy];
         NSMutableArray *tabBarItems = [[NSMutableArray alloc] init];
@@ -312,8 +303,7 @@
  
 */
 
-- (void)setBagesCount:(NSInteger)count atIndex:(NSInteger)index
-{
+- (void)setBagesCount:(NSInteger)count atIndex:(NSInteger)index {
     if (index > [self.tabBar.items count]) {
         return;
     }
@@ -327,8 +317,7 @@
  
  */
 
-- (void)setTabBarHidden:(BOOL)hidden animated:(BOOL)animated
-{
+- (void)setTabBarHidden:(BOOL)hidden animated:(BOOL)animated {
     // Detect if when tarBar is hidden of is animating.
     if (_tabBarHidden == hidden || isAnimating) {
         return;
@@ -366,8 +355,7 @@
  
  */
 
-- (void)setTabBarHidden:(BOOL)tabBarHidden
-{
+- (void)setTabBarHidden:(BOOL)tabBarHidden {
     [self setTabBarHidden:tabBarHidden animated:NO];
 }
 
@@ -379,25 +367,18 @@
 
 */
 
-- (void)hPTabBarDidSelectedAtIndex:(NSInteger)index
-{
+- (void)hPTabBarDidSelectedAtIndex:(NSInteger)index {
     [self setSelectedIndex:index];
-    UIViewController *viewController = [self.viewControllers objectAtIndex:index];
-    if ([self.hPTabBarControllerDelegate respondsToSelector:@selector(hPTabBarControllerDidSelectedViewController:atIndex:)]) {
-        [self.hPTabBarControllerDelegate hPTabBarControllerDidSelectedViewController:viewController atIndex:index];
-    }
 }
 
-- (void)hpTabBarDidDoubleTouchAtIndex:(NSInteger)index
-{
+- (void)hpTabBarDidDoubleTouchAtIndex:(NSInteger)index {
     UIViewController *viewController = [self.viewControllers objectAtIndex:index];
     if (self.isEnableDoubleTouch && [self.hPTabBarControllerDelegate respondsToSelector:@selector(hPTabBarControllerDidDoubleTouchViewController:atIndex:)]) {
         [self.hPTabBarControllerDelegate hPTabBarControllerDidDoubleTouchViewController:viewController atIndex:index];
     }
 }
 
-- (void)hpTabBarDidSelectedAgainAtIndex:(NSInteger)index
-{
+- (void)hpTabBarDidSelectedAgainAtIndex:(NSInteger)index {
     UIViewController *viewController = [self.viewControllers objectAtIndex:index];
     if (self.isEnableTouchAgain) {
         if ([self.hPTabBarControllerDelegate respondsToSelector:@selector(hPTabBarControllerDidTouchAgainViewController:atIndex:)]) {
@@ -415,8 +396,7 @@
  
  */
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if (![keyPath isEqualToString:@"contentOffset"]) {
         return;
     }
