@@ -132,6 +132,20 @@
 
 - (void)setBagesCount:(NSInteger)count atIndex:(NSInteger)index;
 
+
+/**
+ 
+ - Send badges message
+ 
+ */
+
+- (void)showTabBarMessage:(NSString *)message
+                     font:(UIFont *)font
+                    color:(UIColor *)color
+                  atIndex:(NSInteger)index;
+
+- (void)removeMessagePopup;
+
 /**
  
  - Set enable double touch on tabbar item.

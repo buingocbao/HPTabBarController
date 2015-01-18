@@ -17,6 +17,7 @@
 }
 
 - (instancetype)init {
+    
     if (!(self = [super init])) {
         return nil;
     }
@@ -32,6 +33,7 @@
 */
 
 - (void)commonInit {
+    
     [self setBackgroundColor:[UIColor blackColor]];
     [self setTranslucent:1.0f];
     _badgeTextColor = [UIColor whiteColor];
@@ -48,6 +50,7 @@
 */
 
 - (void)drawRect:(CGRect)rect {
+    
     [self setAlpha:self.translucent];
     UIImage *image = nil;
     CGSize imageSize = CGSizeZero;
@@ -135,6 +138,7 @@
 }
 
 - (void)setBadgeCount:(NSInteger)badgeCount {
+    
     _badgeCount = badgeCount;
     if (_badgeCount<1) {
         _badgeSymbol = nil;
@@ -143,6 +147,7 @@
 }
 
 - (void)setBadgeSymbol:(NSString *)badgeSymbol {
+    
     _badgeSymbol = badgeSymbol;
     [self setNeedsDisplay];
 }

@@ -11,13 +11,14 @@
 @implementation HPTabBar
 
 - (instancetype)init {
+    
     if (!(self = [super init])) {
         return nil;
     }
     [self setBackgroundColor:[UIColor clearColor]];
     [self.layer setShadowColor:[UIColor blackColor].CGColor];
-    [self.layer setShadowOffset:CGSizeMake(0, 1.0f)];
-    [self.layer setShadowOpacity:1.0f];
+    [self.layer setShadowOffset:CGSizeMake(0, 1.0)];
+    [self.layer setShadowOpacity:1.0];
     return self;
 }
 
@@ -28,6 +29,7 @@
 */
 
 - (void)setItems:(NSArray *)items {
+    
     if (items && [items isKindOfClass:[NSArray class]]) {
         for (HPTabBarItem *item in items) {
             [item removeFromSuperview];
@@ -49,6 +51,7 @@
 */
 
 - (void)layoutSubviews {
+    
     if ([self.items count]<1) {
         return;
     }
@@ -67,6 +70,7 @@
 */
 
 - (void)didSelectedAtIndex:(id)sender {
+    
     HPTabBarItem *item = (HPTabBarItem *)sender;
     NSInteger index  = [self.items indexOfObject:item];
     if (self.selectedItem) {
@@ -81,7 +85,8 @@
     [self.delegate hPTabBarDidSelectedAtIndex:index];
 }
 
--(void)didDoubleTouchAtIndex:(id)sender withEvent:(UIEvent*)event {
+-(void)didDoubleTouchAtIndex:(id)sender
+                   withEvent:(UIEvent*)event {
     
     HPTabBarItem *item = (HPTabBarItem *)sender;
     NSInteger index  = [self.items indexOfObject:item];
@@ -92,6 +97,7 @@
 }
 
 - (void)setSelectedItem:(HPTabBarItem *)selectedItem {
+    
     if (_selectedItem == selectedItem) {
         return;
     }
