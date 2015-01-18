@@ -376,6 +376,7 @@
         [UIView animateWithDuration:0.25
                          animations:^{
                              [_messagePopup setAlpha:0];
+                         } completion:^(BOOL finished) {
                              [_messagePopup removeFromSuperview];
                              _messagePopup = nil;
                          }];
