@@ -347,9 +347,13 @@
         return;
     }
     
+    // The same shit.
+    if (_messagePopup && index == _messagePopupIndex && [message isEqualToString:_messagePopup.messageString]) {
+        return;
+    }
+    
     // Remove message popup.
     [self removeMessagePopup];
-    
     HPTabBarMessage *messagePopup = [[HPTabBarMessage alloc] init];
     [messagePopup setFont:font];
     [messagePopup setPopupColor:color];
@@ -362,7 +366,10 @@
     [messagePopup setCenter:CGPointMake(x, y)];
     
     [self.view addSubview:messagePopup];
-    
+    [UIView animateWithDuration:0.25
+                     animations:^{
+                         [messagePopup setAlpha:1];
+                     }];
     _messagePopup = messagePopup;
     _messagePopupIndex = index;
     
@@ -424,6 +431,7 @@
 }
 
 - (void)setPopupHiden:(BOOL)hidden {
+    
     CGFloat alpha = 1;
     if (hidden) {
         alpha = 0;

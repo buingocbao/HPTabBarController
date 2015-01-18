@@ -31,6 +31,7 @@
     [self setBackgroundColor:[UIColor clearColor]];
     [self addSubview:[self background]];
     [self addSubview:[self message]];
+    [self setAlpha:0];
 }
 
 - (UILabel *)message {
