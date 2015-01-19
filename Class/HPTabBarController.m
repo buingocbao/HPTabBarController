@@ -347,8 +347,13 @@
         return;
     }
     
-    // The same shit.
-    if (_messagePopup && index == _messagePopupIndex && [message isEqualToString:_messagePopup.messageString]) {
+    if (_messagePopup &&
+        index == _messagePopupIndex &&
+        [message isEqualToString:_messagePopup.messageString]) {
+        return;
+    }
+    
+    if (index == _selectedIndex) {
         return;
     }
     
