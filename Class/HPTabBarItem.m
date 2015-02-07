@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 CoreDump. All rights reserved.
 //
 
-#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
 #import "HPTabBarItem.h"
 
@@ -34,13 +34,23 @@
 
 - (void)commonInit {
     
-    [self setBackgroundColor:[UIColor blackColor]];
-    [self setTranslucent:1.0f];
+    [self setBackgroundColor:[UIColor clearColor]];
+    [self setTranslucent:1.0];
     _badgeTextColor = [UIColor whiteColor];
     _badgeTextFont = [UIFont systemFontOfSize:12];
     _badgePositionAdjustment = UIOffsetZero;
     _badgeBackgroundColor = [UIColor redColor];
     _badgeCount = 0;
+}
+
+- (void)setSelected:(BOOL)selected {
+    
+    [super setSelected:selected];
+    if (selected) {
+        [self setBackgroundColor:self.superview.tintColor];
+    } else {
+        [self setBackgroundColor:[UIColor clearColor]];
+    }
 }
 
 /*
@@ -64,14 +74,14 @@
         image = [self unselectedImage];
     }
     
-    imageSize = self.bounds.size;
+    imageSize = image.size;
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSaveGState(context);
     
     // DRAW IMAGE
-    [image drawInRect:CGRectMake(roundf(frameSize.width / 2 - imageSize.width / 2) + _imagePositionAdjustment.horizontal,
-                                 roundf(frameSize.height / 2 - imageSize.height / 2) + _imagePositionAdjustment.vertical,
+    [image drawInRect:CGRectMake(frameSize.width / 2.0 - imageSize.width / 2.0,
+                                 frameSize.height / 2.0 - imageSize.height / 2.0,
                                  imageSize.width,
                                  imageSize.height)];
     
@@ -129,7 +139,8 @@
             [badgeString drawInRect:CGRectMake(CGRectGetMinX(badgeBackgroundFrame) + 2.0,
                                            CGRectGetMinY(badgeBackgroundFrame) + 2.0,
                                            badgeSize.width,
-                                           badgeSize.height) withAttributes:badgeTextAttributes];
+                                           badgeSize.height)
+                     withAttributes:badgeTextAttributes];
         }
 
     }

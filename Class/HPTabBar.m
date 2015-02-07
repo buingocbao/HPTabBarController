@@ -17,7 +17,7 @@
     }
     [self setBackgroundColor:[UIColor clearColor]];
     [self.layer setShadowColor:[UIColor blackColor].CGColor];
-    [self.layer setShadowOffset:CGSizeMake(0, 1.0)];
+    [self.layer setShadowOffset:CGSizeMake(0, 1.5)];
     [self.layer setShadowOpacity:1.0];
     return self;
 }
@@ -104,6 +104,14 @@
     [_selectedItem setSelected:NO];
     _selectedItem = selectedItem;
     [_selectedItem setSelected:YES];
+}
+
+- (void)setNeedsDisplay {
+    
+    [super setNeedsDisplay];
+    for (HPTabBarItem *item in _items) {
+        [item setNeedsDisplay];
+    }
 }
 
 @end

@@ -146,6 +146,9 @@
 
 - (void)removeMessagePopup;
 
+- (void)registerScrollView:(UIScrollView *)scrollView;
+- (void)unregisterScrollView:(UIScrollView *)scrollView;
+
 /**
  
  - Set enable double touch on tabbar item.

@@ -50,7 +50,7 @@
     
     _messagePopup = nil;
     _messagePopupIndex = -1;
-    [self setTabBarHeight:60];
+    [self setTabBarHeight:44];
     [self setEnableDoucbleTouch:YES];
     [self setEnableTouchAgain:YES];
 }
@@ -120,6 +120,12 @@
     [super viewDidLoad];
     [self.view addSubview:self.contentView];
     [self.view addSubview:self.tabBar];
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+                                duration:(NSTimeInterval)duration {
+
+    [self.tabBar setNeedsDisplay];
 }
 
 /*
@@ -497,6 +503,20 @@
  - Notification.
  
  */
+
+- (void)registerScrollView:(UIScrollView *)scrollView {
+    
+    [scrollView addObserver:self
+                 forKeyPath:@"contentOffset"
+                    options:NSKeyValueObservingOptionNew
+                    context:nil];
+}
+
+- (void)unregisterScrollView:(UIScrollView *)scrollView {
+    
+    [scrollView removeObserver:self
+                    forKeyPath:@"contentOffset"];
+}
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     
