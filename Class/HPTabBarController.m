@@ -124,7 +124,7 @@
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
                                 duration:(NSTimeInterval)duration {
-
+    
     [self.tabBar setNeedsDisplay];
 }
 
@@ -147,26 +147,33 @@
         [self removeMessagePopup];
     }
     
-    // Set selected index value
-    _selectedIndex = selectedIndex;
-    [self.tabBar setSelectedItem:[self.tabBar.items objectAtIndex:selectedIndex]];
-    
-    // Remove current view controller.
-    if ([self selectedViewController]) {
-        [[self selectedViewController] willMoveToParentViewController:nil];
-        [[[self selectedViewController] view] removeFromSuperview];
-        [[self selectedViewController] removeFromParentViewController];
-    }
-    
-    // Set present controller
+  
     UIViewController *viewController = [self.viewControllers objectAtIndex:selectedIndex];
+  
+    if (![viewController isKindOfClass:[NSNull class]]) {
+      
+        // Set selected index value
+        _selectedIndex = selectedIndex;
     
-    [self setSelectedViewController:viewController];
-    [self.selectedViewController.view setFrame:self.contentView.bounds];
-    [self addChildViewController:self.selectedViewController];
-    [self.contentView addSubview:self.selectedViewController.view];
-    [[self selectedViewController] didMoveToParentViewController:self];
-    
+        [self.tabBar setSelectedItem:[self.tabBar.items objectAtIndex:selectedIndex]];
+      
+        // Remove current view controller.
+        if ([self selectedViewController]) {
+            [[self selectedViewController] willMoveToParentViewController:nil];
+            [[[self selectedViewController] view] removeFromSuperview];
+            [[self selectedViewController] removeFromParentViewController];
+        }
+        
+        // Set present controller
+        [self setSelectedViewController:viewController];
+        [self.selectedViewController.view setFrame:self.contentView.bounds];
+        [self addChildViewController:self.selectedViewController];
+        [self.contentView addSubview:self.selectedViewController.view];
+        [[self selectedViewController] didMoveToParentViewController:self];
+    } else {
+        [self.tabBar setSelectedItem:[self.tabBar.items objectAtIndex:_selectedIndex]];
+    }
+  
     if ([self.hPTabBarControllerDelegate respondsToSelector:@selector(hPTabBarControllerDidSelectedViewController:atIndex:)]) {
         [self.hPTabBarControllerDelegate hPTabBarControllerDidSelectedViewController:viewController atIndex:selectedIndex];
     }
@@ -291,7 +298,9 @@
         NSMutableArray *tabBarItems = [[NSMutableArray alloc] init];
         for (int i = 0; i < [self.viewControllers count]; i++) {
             HPTabBarItem *tabBarItem = [[HPTabBarItem alloc] init];
-            [tabBarItem setTitle:[[self.viewControllers objectAtIndex:i] title]];
+            if (![[self.viewControllers objectAtIndex:i] isKindOfClass:[NSNull class]]) {
+                [tabBarItem setTitle:[[self.viewControllers objectAtIndex:i] title]];
+            }
             [tabBarItems addObject:tabBarItem];
             
             // Set tabBar image for state selected, unselected and disable.

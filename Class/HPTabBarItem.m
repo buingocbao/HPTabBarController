@@ -93,15 +93,11 @@
             badgeString = [NSString stringWithFormat:@"%ld", (long)self.badgeCount];
         }
         // Caculator badge string size
-        if (SYSTEM_VERSION_LESS_THAN(@"7")) {
-            badgeSize = [badgeString sizeWithFont:self.badgeTextFont constrainedToSize:CGSizeMake(frameSize.width, 20)];
-        } else {
             badgeSize = [badgeString boundingRectWithSize:CGSizeMake(frameSize.width, 20)
                                                   options:NSStringDrawingUsesLineFragmentOrigin
                                                attributes:@{NSFontAttributeName: self.badgeTextFont}
                                                   context:nil].size;
-        }
-        
+      
         if (badgeSize.width < badgeSize.height) {
             badgeSize = CGSizeMake(badgeSize.height, badgeSize.height);
         }
@@ -127,22 +123,11 @@
         NSDictionary *badgeTextAttributes = @{NSFontAttributeName: [self badgeTextFont],
                                               NSForegroundColorAttributeName: [self badgeTextColor],
                                               NSParagraphStyleAttributeName: badgeTextStyle };
-        // Draw text
-        if (SYSTEM_VERSION_LESS_THAN(@"7")) {
-            [badgeString drawInRect:CGRectMake(CGRectGetMinX(badgeBackgroundFrame) + 2.0,
-                                                     CGRectGetMinY(badgeBackgroundFrame) + 2.0,
-                                                     badgeSize.width, badgeSize.height)
-                           withFont:self.badgeTextFont
-                      lineBreakMode:NSLineBreakByTruncatingTail
-                          alignment:NSTextAlignmentCenter];
-        } else {
-            [badgeString drawInRect:CGRectMake(CGRectGetMinX(badgeBackgroundFrame) + 2.0,
+               [badgeString drawInRect:CGRectMake(CGRectGetMinX(badgeBackgroundFrame) + 2.0,
                                            CGRectGetMinY(badgeBackgroundFrame) + 2.0,
                                            badgeSize.width,
                                            badgeSize.height)
                      withAttributes:badgeTextAttributes];
-        }
-
     }
 
     CGContextRestoreGState(context);
