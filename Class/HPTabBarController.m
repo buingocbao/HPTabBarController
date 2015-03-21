@@ -147,16 +147,16 @@
         [self removeMessagePopup];
     }
     
-  
+    
     UIViewController *viewController = [self.viewControllers objectAtIndex:selectedIndex];
-  
+    
     if (![viewController isKindOfClass:[NSNull class]]) {
-      
+        
         // Set selected index value
         _selectedIndex = selectedIndex;
-    
+        
         [self.tabBar setSelectedItem:[self.tabBar.items objectAtIndex:selectedIndex]];
-      
+        
         // Remove current view controller.
         if ([self selectedViewController]) {
             [[self selectedViewController] willMoveToParentViewController:nil];
@@ -173,7 +173,7 @@
     } else {
         [self.tabBar setSelectedItem:[self.tabBar.items objectAtIndex:_selectedIndex]];
     }
-  
+    
     if ([self.hPTabBarControllerDelegate respondsToSelector:@selector(hPTabBarControllerDidSelectedViewController:atIndex:)]) {
         [self.hPTabBarControllerDelegate hPTabBarControllerDidSelectedViewController:viewController atIndex:selectedIndex];
     }
@@ -489,7 +489,7 @@
 - (void)hpTabBarDidDoubleTouchAtIndex:(NSInteger)index {
     
     UIViewController *viewController = [self.viewControllers objectAtIndex:index];
-    if (self.isEnableDoubleTouch && [self.hPTabBarControllerDelegate respondsToSelector:@selector(hPTabBarControllerDidDoubleTouchViewController:atIndex:)]) {
+    if ([self.hPTabBarControllerDelegate respondsToSelector:@selector(hPTabBarControllerDidDoubleTouchViewController:atIndex:)]) {
         [self.hPTabBarControllerDelegate hPTabBarControllerDidDoubleTouchViewController:viewController atIndex:index];
     }
 }
@@ -497,10 +497,10 @@
 - (void)hpTabBarDidSelectedAgainAtIndex:(NSInteger)index {
     
     UIViewController *viewController = [self.viewControllers objectAtIndex:index];
+    if ([self.hPTabBarControllerDelegate respondsToSelector:@selector(hPTabBarControllerDidTouchAgainViewController:atIndex:)]) {
+        [self.hPTabBarControllerDelegate hPTabBarControllerDidTouchAgainViewController:viewController atIndex:index];
+    }
     if (self.isEnableTouchAgain) {
-        if ([self.hPTabBarControllerDelegate respondsToSelector:@selector(hPTabBarControllerDidTouchAgainViewController:atIndex:)]) {
-            [self.hPTabBarControllerDelegate hPTabBarControllerDidTouchAgainViewController:viewController atIndex:index];
-        }
         if ([viewController isKindOfClass:[UINavigationController class]]) {
             [(UINavigationController *)viewController popToRootViewControllerAnimated:YES];
         }
