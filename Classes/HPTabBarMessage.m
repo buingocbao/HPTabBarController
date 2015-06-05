@@ -17,7 +17,6 @@
 }
 
 - (instancetype)init {
-    
     if (!(self = [super init])) {
         return nil;
     }
@@ -26,7 +25,6 @@
 }
 
 - (void)commonInit {
-    
     up = YES;
     [self setBackgroundColor:[UIColor clearColor]];
     [self addSubview:[self background]];
@@ -35,7 +33,6 @@
 }
 
 - (UILabel *)message {
-    
     if (!_message) {
         _message = [[UILabel alloc] init];
         [_message setNumberOfLines:0];
@@ -46,7 +43,6 @@
 }
 
 - (UIView *)background {
-    
     if (!_backgound) {
         _backgound = [[UIView alloc] init];
         [_backgound setBackgroundColor:[UIColor blueColor]];
@@ -56,21 +52,18 @@
 }
 
 - (void)setMessageString:(NSString *)messageString {
-    
     _messageString = messageString;
     [[self message] setText:_messageString];
     [self reLayout];
 }
 
 - (void)setFont:(UIFont *)font {
-    
     _font = font;
     [[self message] setFont:font];
     [self reLayout];
 }
 
 - (void)reLayout {
-    
     [[self message] setFrame:CGRectMake(10, 10, 100, 0)];
     [_message sizeToFit];
     [self setFrame:CGRectMake(0, 0, 120, CGRectGetHeight(_message.bounds)+30)];
@@ -78,14 +71,12 @@
 }
 
 - (void)setPopupColor:(UIColor *)popupColor {
-    
     _popupColor = popupColor;
     [[self background] setBackgroundColor:[_popupColor copy]];
     [self reLayout];
 }
 
 - (void)startAnimation {
-    
     if (stop) {
         return;
     }
@@ -110,12 +101,10 @@
 }
 
 - (void)stopAnimation {
-    
     stop = YES;
 }
 
 - (void)drawRect:(CGRect)rect {
-    
     [super drawRect:rect];
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGContextBeginPath(ctx);

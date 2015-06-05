@@ -28,7 +28,6 @@
 }
 
 - (instancetype)initWithViewControllers:(NSArray *)viewControllers {
-    
     if (!(self = [super init])) {
         return nil;
     }
@@ -38,7 +37,6 @@
 }
 
 - (instancetype)init {
-    
     if (!(self = [super init])) {
         return nil;
     }
@@ -47,7 +45,6 @@
 }
 
 - (void)commonInit {
-    
     _messagePopup = nil;
     _messagePopupIndex = -1;
     [self setTabBarHeight:44];
@@ -65,7 +62,6 @@
  */
 
 - (UIView *)contentView {
-    
     if (!_contentView) {
         _contentView = [[UIView alloc] init];
         [_contentView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|
@@ -83,7 +79,6 @@
  */
 
 - (HPTabBar *)tabBar {
-    
     if (!_tabBar) {
         _tabBar = [[HPTabBar alloc] init];
         [_tabBar setDelegate:self];
@@ -102,10 +97,10 @@
  */
 
 - (void)setTabBarHeight:(CGFloat)tabBarHeight {
-    
     _tabBarHeight = tabBarHeight;
     [self.contentView setFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds))];
-    [self.tabBar setFrame:CGRectMake(0, CGRectGetHeight(self.view.bounds)-_tabBarHeight, CGRectGetWidth(self.view.bounds), _tabBarHeight)];
+    [self.tabBar setFrame:CGRectMake(0, CGRectGetHeight(self.view.bounds)-_tabBarHeight,
+                                     CGRectGetWidth(self.view.bounds), _tabBarHeight)];
 }
 
 /*
@@ -116,7 +111,6 @@
  */
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
     [self.view addSubview:self.contentView];
     [self.view addSubview:self.tabBar];
@@ -136,7 +130,6 @@
  */
 
 - (void)setSelectedIndex:(NSUInteger)selectedIndex {
-    
     // Selected index out range.
     if (selectedIndex >= [self.viewControllers count]) {
         return;
@@ -146,17 +139,14 @@
     if (selectedIndex == _messagePopupIndex) {
         [self removeMessagePopup];
     }
-    
-    
     UIViewController *viewController = [self.viewControllers objectAtIndex:selectedIndex];
-    
     if (![viewController isKindOfClass:[NSNull class]]) {
-        
+      
         // Set selected index value
         _selectedIndex = selectedIndex;
-        
+    
         [self.tabBar setSelectedItem:[self.tabBar.items objectAtIndex:selectedIndex]];
-        
+      
         // Remove current view controller.
         if ([self selectedViewController]) {
             [[self selectedViewController] willMoveToParentViewController:nil];
@@ -173,7 +163,7 @@
     } else {
         [self.tabBar setSelectedItem:[self.tabBar.items objectAtIndex:_selectedIndex]];
     }
-    
+  
     if ([self.hPTabBarControllerDelegate respondsToSelector:@selector(hPTabBarControllerDidSelectedViewController:atIndex:)]) {
         [self.hPTabBarControllerDelegate hPTabBarControllerDidSelectedViewController:viewController atIndex:selectedIndex];
     }
@@ -186,7 +176,6 @@
  */
 
 - (void)setSelectedViewController:(UIViewController *)selectedViewController {
-    
     if ([self.viewControllers containsObject:selectedViewController]) {
         _selectedViewController = selectedViewController;
         NSInteger index = [self.viewControllers indexOfObject:selectedViewController];
@@ -219,7 +208,6 @@
  */
 
 - (void)setSelectedTabBarItemImages:(NSArray *)selectedTabBarItemImages {
-    
     _selectedTabBarItemImages = [selectedTabBarItemImages copy];
     for (int i = 0; i < [self.tabBar.items count]; i++) {
         if (i >= [_selectedTabBarItemImages count]) {
@@ -237,7 +225,6 @@
  */
 
 - (void)setUnselectedTabBarItemImages:(NSArray *)unselectedTabBarItemImages {
-    
     _unselectedTabBarItemImages = [unselectedTabBarItemImages copy];
     for (int i = 0; i < [self.tabBar.items count]; i++) {
         if (i >= [_unselectedTabBarItemImages count]) {
@@ -255,7 +242,6 @@
  */
 
 - (void)setDisableTabBarItemImages:(NSArray *)disableTabBarItemImages {
-    
     _disableTabBarItemImages = [disableTabBarItemImages copy];
     for (int i = 0; i < [self.tabBar.items count]; i++) {
         if (i >= [_disableTabBarItemImages count]) {
@@ -273,7 +259,6 @@
  */
 
 - (void)setTranslucentTabBarItemValues:(NSArray *)translucentTabBarItemValues {
-    
     _translucentTabBarItemValues = [translucentTabBarItemValues copy];
     for (int i = 0; i < [self.tabBar.items count]; i++) {
         if (i >= [_translucentTabBarItemValues count]) {
@@ -292,7 +277,6 @@
  */
 
 - (void)setViewControllers:(NSArray *)viewControllers {
-    
     if (viewControllers && [viewControllers isKindOfClass:[NSArray class]]) {
         _viewControllers = [viewControllers copy];
         NSMutableArray *tabBarItems = [[NSMutableArray alloc] init];
@@ -345,7 +329,6 @@
  */
 
 - (void)setBagesCount:(NSInteger)count atIndex:(NSInteger)index {
-    
     if (index > [self.tabBar.items count]) {
         return;
     }
@@ -357,7 +340,6 @@
                      font:(UIFont *)font
                     color:(UIColor *)color
                   atIndex:(NSInteger)index {
-    
     if (index > [self.tabBar.items count]) {
         return;
     }
@@ -397,7 +379,6 @@
 }
 
 - (void)removeMessagePopup {
-    
     if (_messagePopup) {
         [_messagePopup stopAnimation];
         [UIView animateWithDuration:0.25
@@ -417,7 +398,6 @@
  */
 
 - (void)setTabBarHidden:(BOOL)hidden animated:(BOOL)animated {
-    
     // Is hidden or is animating.
     if (_tabBarHidden == hidden || isAnimating) {
         return;
@@ -451,7 +431,6 @@
 }
 
 - (void)setPopupHiden:(BOOL)hidden {
-    
     CGFloat alpha = 1;
     if (hidden) {
         alpha = 0;
@@ -482,25 +461,24 @@
  */
 
 - (void)hPTabBarDidSelectedAtIndex:(NSInteger)index {
-    
     [self setSelectedIndex:index];
 }
 
 - (void)hpTabBarDidDoubleTouchAtIndex:(NSInteger)index {
-    
     UIViewController *viewController = [self.viewControllers objectAtIndex:index];
-    if ([self.hPTabBarControllerDelegate respondsToSelector:@selector(hPTabBarControllerDidDoubleTouchViewController:atIndex:)]) {
-        [self.hPTabBarControllerDelegate hPTabBarControllerDidDoubleTouchViewController:viewController atIndex:index];
+    if (self.isEnableDoubleTouch && [self.hPTabBarControllerDelegate respondsToSelector:@selector(hPTabBarControllerDidDoubleTouchViewController:atIndex:)]) {
+        [self.hPTabBarControllerDelegate hPTabBarControllerDidDoubleTouchViewController:viewController
+                                                                                atIndex:index];
     }
 }
 
 - (void)hpTabBarDidSelectedAgainAtIndex:(NSInteger)index {
-    
     UIViewController *viewController = [self.viewControllers objectAtIndex:index];
-    if ([self.hPTabBarControllerDelegate respondsToSelector:@selector(hPTabBarControllerDidTouchAgainViewController:atIndex:)]) {
-        [self.hPTabBarControllerDelegate hPTabBarControllerDidTouchAgainViewController:viewController atIndex:index];
-    }
     if (self.isEnableTouchAgain) {
+        if ([self.hPTabBarControllerDelegate respondsToSelector:@selector(hPTabBarControllerDidTouchAgainViewController:atIndex:)]) {
+            [self.hPTabBarControllerDelegate hPTabBarControllerDidTouchAgainViewController:viewController
+                                                                                   atIndex:index];
+        }
         if ([viewController isKindOfClass:[UINavigationController class]]) {
             [(UINavigationController *)viewController popToRootViewControllerAnimated:YES];
         }
@@ -514,7 +492,6 @@
  */
 
 - (void)registerScrollView:(UIScrollView *)scrollView {
-    
     [scrollView addObserver:self
                  forKeyPath:@"contentOffset"
                     options:NSKeyValueObservingOptionNew
@@ -522,13 +499,14 @@
 }
 
 - (void)unregisterScrollView:(UIScrollView *)scrollView {
-    
     [scrollView removeObserver:self
                     forKeyPath:@"contentOffset"];
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context {
     if (![keyPath isEqualToString:@"contentOffset"]) {
         return;
     }
@@ -544,9 +522,11 @@
     
     CGFloat delta = lastOffset - contentOffset;
     // current > 0 to detect when scoll to top.
-    if (contentOffset > 0 && delta < -2.0 && contentOffset < scrollView.contentSize.height-scrollView.bounds.size.height+edge.top) {
+    if (contentOffset > 0 && delta < -2.0 && contentOffset < scrollView.contentSize.height
+        - scrollView.bounds.size.height + edge.top) {
         [self setTabBarHidden:YES animated:YES];
-    }else if (delta > 2.0 || (delta > 2.0 &&  contentOffset > scrollView.contentSize.height - scrollView.bounds.size.height+edge.bottom)) {
+    }else if (delta > 2.0 || (delta > 2.0 &&  contentOffset > scrollView.contentSize.height
+                              - scrollView.bounds.size.height + edge.bottom)) {
         [self setTabBarHidden:NO animated:YES];
     }
     lastOffset = contentOffset;

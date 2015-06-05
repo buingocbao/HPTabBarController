@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>192CE831-4763-4085-885D-B8F55FC5ED2F</string>
+	<key>IDESourceControlProjectName</key>
+	<string>HPTabBarController</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F1F1F22C195C188EEA6901B6D4307D0EB80B188C</key>
+		<string>github.com:huyphams/HPTabBarController.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>HPTabBarController.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F1F1F22C195C188EEA6901B6D4307D0EB80B188C</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:huyphams/HPTabBarController.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F1F1F22C195C188EEA6901B6D4307D0EB80B188C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F1F1F22C195C188EEA6901B6D4307D0EB80B188C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>HPTabBarController</string>
+		</dict>
+	</array>
+</dict>
+</plist>

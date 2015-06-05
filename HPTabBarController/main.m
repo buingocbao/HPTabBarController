@@ -1,9 +1,9 @@
 //
 //  main.m
-//  TabBarAutohide
+//  HPTabBarController
 //
-//  Created by Huy Pham on 7/10/14.
-//  Copyright (c) 2014 CoreDump. All rights reserved.
+//  Created by Huy Pham on 6/5/15.
+//  Copyright (c) 2015 Katana. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

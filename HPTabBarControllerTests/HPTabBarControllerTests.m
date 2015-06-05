@@ -1,19 +1,19 @@
 //
-//  TabBarAutohideTests.m
-//  TabBarAutohideTests
+//  HPTabBarControllerTests.m
+//  HPTabBarControllerTests
 //
-//  Created by Huy Pham on 7/10/14.
-//  Copyright (c) 2014 CoreDump. All rights reserved.
+//  Created by Huy Pham on 6/5/15.
+//  Copyright (c) 2015 Katana. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
-@interface TabBarAutohideTests : XCTestCase
+@interface HPTabBarControllerTests : XCTestCase
 
 @end
 
-@implementation TabBarAutohideTests
+@implementation HPTabBarControllerTests
 
 - (void)setUp {
     [super setUp];

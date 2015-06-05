@@ -11,7 +11,6 @@
 @implementation HPTabBar
 
 - (instancetype)init {
-    
     if (!(self = [super init])) {
         return nil;
     }
@@ -29,7 +28,6 @@
 */
 
 - (void)setItems:(NSArray *)items {
-    
     if (items && [items isKindOfClass:[NSArray class]]) {
         for (HPTabBarItem *item in items) {
             [item removeFromSuperview];
@@ -38,7 +36,8 @@
         for (int i = 0; i < [_items count]; i++) {
             HPTabBarItem *item = [_items objectAtIndex:i];
             [item addTarget:self action:@selector(didSelectedAtIndex:) forControlEvents:UIControlEventTouchDown];
-            [item addTarget:self action:@selector(didDoubleTouchAtIndex:withEvent:) forControlEvents:UIControlEventTouchDownRepeat];
+            [item addTarget:self action:@selector(didDoubleTouchAtIndex:withEvent:)
+           forControlEvents:UIControlEventTouchDownRepeat];
             [self addSubview:item];
         }
     }
@@ -51,7 +50,6 @@
 */
 
 - (void)layoutSubviews {
-    
     if ([self.items count]<1) {
         return;
     }
@@ -70,7 +68,6 @@
 */
 
 - (void)didSelectedAtIndex:(id)sender {
-    
     HPTabBarItem *item = (HPTabBarItem *)sender;
     NSInteger index  = [self.items indexOfObject:item];
     if (self.selectedItem) {
@@ -87,7 +84,6 @@
 
 -(void)didDoubleTouchAtIndex:(id)sender
                    withEvent:(UIEvent*)event {
-    
     HPTabBarItem *item = (HPTabBarItem *)sender;
     NSInteger index  = [self.items indexOfObject:item];
     UITouch* touch = [[event allTouches] anyObject];
@@ -97,7 +93,6 @@
 }
 
 - (void)setSelectedItem:(HPTabBarItem *)selectedItem {
-    
     if (_selectedItem == selectedItem) {
         return;
     }
@@ -107,7 +102,6 @@
 }
 
 - (void)setNeedsDisplay {
-    
     [super setNeedsDisplay];
     for (HPTabBarItem *item in _items) {
         [item setNeedsDisplay];

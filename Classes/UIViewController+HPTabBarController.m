@@ -10,8 +10,7 @@
 
 @implementation UIViewController (HPTabBarController)
 
--(HPTabBarController *)hPTabBarController {
-    
+- (HPTabBarController *)hPTabBarController {
     UIViewController *parentViewController = self.parentViewController;
     while (parentViewController != nil) {
         if([parentViewController isKindOfClass:[HPTabBarController class]]){
