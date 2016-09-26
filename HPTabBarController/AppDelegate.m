@@ -30,7 +30,7 @@
     for (int i=0; i<4; i++) {
         ViewController *viewController = [[ViewController alloc] init];
         if (i%2==0) {
-            [viewController.view setBackgroundColor:[UIColor greenColor]];
+            [viewController.view setBackgroundColor:[UIColor grayColor]];
         } else {
             [viewController.view setBackgroundColor:[UIColor purpleColor]];
         }
@@ -58,12 +58,15 @@
     
     [tabBarController setSelectedTabBarItemImages:selectedImages];
     [tabBarController setUnselectedTabBarItemImages:unSelectedImages];
-    [tabBarController setBagesCount:999 atIndex:0];
+    [tabBarController setBagesCount:9 atIndex:3];
+    [tabBarController showTabBarMessage:@"New notification!!!"
+                                   font:[UIFont fontWithName:@"Helvetica Neue" size:12]
+                                  color:[UIColor greenColor]
+                                atIndex:2];
     
     [self.window setRootViewController:tabBarController];
     [self.window makeKeyAndVisible];
 
-    
     return YES;
 }
 
