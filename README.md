@@ -51,7 +51,7 @@ pod "HPTabBarController", "~> 1.5.0"
 
 ## Contact
 
-- [duchuykun@gmail.com](http://facebook.com/huyphams)
+- [duchuykun@gmail.com](http://huypham.me)
 
 If you use/enjoy `HPTabBarController`, let me know!
 
