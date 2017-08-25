@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/huyphams/HPTabBarController.svg)](https://travis-ci.org/huyphams/HPTabBarController)[![CocoaPods Version](https://cocoapod-badges.herokuapp.com/v/HPTabBarController/badge.png)](http://cocoapods.org/?q=HPTabBarController)
 
 
-HPTabBarController is a high custom tabbar, replace UITabBarController.
+HPTabBarController is an alternative of UITabBarController.
 
 ## Features
 
